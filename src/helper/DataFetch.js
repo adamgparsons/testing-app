@@ -7,17 +7,20 @@ function DataFetch(url) {
   useEffect(() => {
     const fetchContent = async () => {
       fetch(url).then((response) => {
-        console.log("response");
-        return response
-          .json()
-          .then((result) => {
-            setStatus(false);
-            setFetchedData(result);
-          })
-          .catch((error) => {
-            setError(true);
-            setStatus(false);
-          });
+        if (response.status === 200) {
+          return response
+            .json()
+            .then((result) => {
+              setStatus(false);
+              setFetchedData(result);
+            })
+            .catch((error) => {
+              setError(true);
+              setStatus(false);
+            });
+        } else {
+          console.log("An error has occurred");
+        }
       });
     };
     fetchContent();

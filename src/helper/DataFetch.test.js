@@ -10,9 +10,7 @@ describe("Fetch hook function", () => {
       status: false,
       isError: false,
     });
-    const { result } = renderHook(() => {
-      DataFetch("https://www.google.com");
-    });
+    const { result } = renderHook(() => DataFetch("https://www.google.com"));
 
     expect(result.current).toEqual({
       data: "hello",
@@ -21,3 +19,6 @@ describe("Fetch hook function", () => {
     });
   });
 });
+
+// test status
+// test if error
